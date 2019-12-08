@@ -1151,7 +1151,7 @@ function generateAllThemes($injector, $mdTheming) {
 
 function generateTheme(theme, name, nonce) {
   var head = document.head;
-  var firstChild = head ? head.firstElementChild : null;
+  var firstChild = document.getElementsByTagName('title')[0];
 
   if (!GENERATED[name]) {
     // For each theme, use the color palettes specified for
@@ -1167,7 +1167,7 @@ function generateTheme(theme, name, nonce) {
             style.setAttribute('nonce', nonce);
           }
           style.appendChild(document.createTextNode(styleContent));
-          head.insertBefore(style, firstChild);
+          head.insertBefore(style, firstChild.nextSibling);
         }
       }
     });
